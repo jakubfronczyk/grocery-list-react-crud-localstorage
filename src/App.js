@@ -45,7 +45,7 @@ const App = () => {
       showAlert(true, 'success', 'value changed')
     }else{
       showAlert(true, 'success', 'item added to the list')
-      const newItem = {id: new Date().getTime().toString(), title:name}
+      const newItem = {id: new Date().getTime().toString(), title:name, done:false}
       setList([...list, newItem])
       setName('')
 
@@ -69,6 +69,23 @@ const App = () => {
     setEditID(id)
     setName(specificItem.title)
   }
+  const doneItem = (id) => {
+    const specificItem = list.find((item)=> item.id === id)
+    setList(list.map(item => {
+      if (item.id === id){
+        return {...item, done:!item.done}
+      }else{
+        return item
+      }
+    }))
+    if(specificItem.done === false){
+      showAlert(true, 'success', 'item checked')
+    }else{
+      showAlert(true, 'danger', 'item unchecked')
+    }
+  }
+  
+
 
   useEffect(()=>{
     localStorage.setItem('list', JSON.stringify(list))
@@ -94,7 +111,12 @@ const App = () => {
       </form>
       {list.length > 0 &&
       <div className="grocery-container">
-        <List items={list} removeItem={removeItem} editItem={editItem}/>
+        <List 
+          items={list} 
+          removeItem={removeItem} 
+          editItem={editItem} 
+          doneItem={doneItem}
+          />
         <button className="clear-btn" onClick={clearList}>clear items</button>
       </div>
       }
