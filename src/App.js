@@ -103,7 +103,7 @@ const App = () => {
             placeholder="e.g. eggs" 
             value={name}
             onChange={(e)=> setName(e.target.value)}
-           />
+          />
           <button type="submit" className="submit-btn">
             {isEditing ? 'edit' : 'submit'}
           </button>
