@@ -19,12 +19,7 @@
   --max-width: 1170px;
   --fixed-width: 620px;
 }
-/*
-=============== 
-Global Styles
-===============
-*/
-
+/* global styles */
 *,
 ::after,
 ::before {
@@ -133,11 +128,7 @@ main {
   display: grid;
   place-items: center;
 }
-/*
-=============== 
-Grocery List
-===============
-*/
+/* grocery list */
 .section-center {
   background: var(--color-white);
   border-radius: var(--radius);
